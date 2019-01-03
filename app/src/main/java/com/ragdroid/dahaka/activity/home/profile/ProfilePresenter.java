@@ -1,11 +1,14 @@
 package com.ragdroid.dahaka.activity.home.profile;
 
+import android.util.Log;
+
 import com.ragdroid.dahaka.api.entity.Pokemon;
 import com.ragdroid.dahaka.app.UserManager;
 import com.ragdroid.dahaka.mvp.BasePresenterImpl;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Timer;
 
 import javax.inject.Inject;
 
@@ -14,12 +17,15 @@ import javax.inject.Inject;
  */
 
 public class ProfilePresenter extends BasePresenterImpl<ProfileContract.View> implements ProfileContract.Presenter {
+    private static final String TAG = ProfilePresenter.class.getSimpleName();
 
     private final Pokemon pokemon;
 
     @Inject
     public ProfilePresenter(Pokemon pokemon) {
         this.pokemon = pokemon;
+        Log.e(TAG, ProfilePresenter.this.toString());
+        Log.e(TAG, pokemon.toString());
     }
 
     @Override

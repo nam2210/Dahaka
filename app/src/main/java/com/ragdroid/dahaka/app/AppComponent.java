@@ -26,10 +26,11 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AndroidSupportInjectionModule.class})
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
+    //create user component
+    //UserComponent.Builder userBuilder();
 
-    UserComponent.Builder userBuilder();
-
-    UserManager getUserManager();
+    //expose user manager
+    //UserManager getUserManager();
 
     void inject(DahakaApplication instance);
 
@@ -40,7 +41,7 @@ public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
         @BindsInstance
         Builder application(Application application);
-        Builder apiModule(ApiModule apiModule);
+        //Builder apiModule(ApiModule apiModule);
     }
 
 }

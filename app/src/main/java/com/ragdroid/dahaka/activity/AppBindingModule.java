@@ -2,6 +2,7 @@ package com.ragdroid.dahaka.activity;
 
 import com.ragdroid.dahaka.activity.login.LoginActivity;
 import com.ragdroid.dahaka.activity.login.LoginModule;
+import com.ragdroid.dahaka.app.AppComponent;
 import com.ragdroid.dahaka.user.UserComponent;
 
 import dagger.Module;

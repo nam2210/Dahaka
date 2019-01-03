@@ -3,10 +3,13 @@ package com.ragdroid.dahaka.app;
 
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.ragdroid.dahaka.api.entity.Pokemon;
 import com.ragdroid.dahaka.user.PokemonService;
 import com.ragdroid.dahaka.user.UserComponent;
+
+import java.util.Timer;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -22,7 +25,7 @@ import io.reactivex.Maybe;
  */
 @Singleton
 public class UserManager implements HasActivityInjector {
-
+    private static final String TAG = UserManager.class.getSimpleName();
 
     private final PokemonService service;
     private final UserComponent.Builder userComponentBuilder;
@@ -32,10 +35,16 @@ public class UserManager implements HasActivityInjector {
 
     private UserComponent userComponent;
 
+
     @Inject
     public UserManager(PokemonService service, UserComponent.Builder builder) {
         this.service = service;
         this.userComponentBuilder = builder;
+        if (activityInjector != null){
+            Log.e(TAG,"activityInjector=" + activityInjector.toString());
+        } else {
+            Log.e(TAG,"activityInjector is null" );
+        }
     }
 
     public Flowable<Pokemon> loginWithUserName(String userName) {
@@ -50,6 +59,7 @@ public class UserManager implements HasActivityInjector {
                 .pokeMon(pokemon)
                 .build();
         userComponent.inject(this);
+
     }
 
 
@@ -72,6 +82,7 @@ public class UserManager implements HasActivityInjector {
 
     @Override
     public AndroidInjector<Activity> activityInjector() {
+        Log.e(TAG,"activityInjector=" + activityInjector.toString());
         return activityInjector;
     }
 }

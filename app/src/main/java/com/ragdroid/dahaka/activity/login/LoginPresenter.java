@@ -1,5 +1,7 @@
 package com.ragdroid.dahaka.activity.login;
 
+import android.util.Log;
+
 import com.ragdroid.dahaka.activity.ActivityScope;
 import com.ragdroid.dahaka.api.entity.Pokemon;
 import com.ragdroid.dahaka.app.UserManager;
@@ -18,7 +20,7 @@ import io.reactivex.functions.Consumer;
  */
 @ActivityScope
 public class LoginPresenter extends BasePresenterImpl<LoginContract.View> implements LoginContract.Presenter {
-
+    private static final String TAG = LoginPresenter.class.getSimpleName();
     private final UserManager userManager;
     private final BaseSchedulerProvider schedulerProvider;
     private LoginModel loginModel;
@@ -27,6 +29,7 @@ public class LoginPresenter extends BasePresenterImpl<LoginContract.View> implem
     public LoginPresenter(UserManager userManager, BaseSchedulerProvider schedulerProvider) {
         this.userManager = userManager;
         this.schedulerProvider = schedulerProvider;
+        Log.e(TAG,"logged in=" + userManager.isLoggedIn());
     }
 
     @Override

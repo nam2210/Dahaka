@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.gson.Gson;
 import com.ragdroid.dahaka.R;
 import com.ragdroid.dahaka.activity.home.moves.MovesFragment;
 import com.ragdroid.dahaka.activity.home.profile.ProfileFragment;
@@ -25,6 +27,9 @@ public class HomeActivity extends BaseUserActivity<HomeContract.Presenter> {
     @Inject ProfileFragment profileFragment;
     @Inject StatsFragment statsFragment;
     @Inject MovesFragment movesFragment;
+
+    @Inject
+    Gson gson;
 
     private ActivityHomeBinding viewDataBinding;
 
@@ -66,7 +71,7 @@ public class HomeActivity extends BaseUserActivity<HomeContract.Presenter> {
         }
         return false;
     }
-
+    private static final String TAG = HomeActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +79,8 @@ public class HomeActivity extends BaseUserActivity<HomeContract.Presenter> {
         viewDataBinding.bottomNavigation.setOnNavigationItemSelectedListener(navigationListener);
         viewDataBinding.bottomNavigation.setSelectedItemId(R.id.action_profile);
         openFragment(R.id.action_profile);
+
+        Log.e(TAG,"create gson=" + gson.toString());
     }
 
     @Override
