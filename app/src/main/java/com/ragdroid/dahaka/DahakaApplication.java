@@ -23,7 +23,7 @@ import dagger.android.HasActivityInjector;
 public class DahakaApplication extends Application implements HasActivityInjector {
     private static final String TAG = DahakaApplication.class.getSimpleName();
 
-    @Inject DispatchingAndroidInjector<Activity> activityInjector;
+//    @Inject DispatchingAndroidInjector<Activity> activityInjector;
     @Inject UserManager userManager;
 
     public AppComponent getAppComponent() {

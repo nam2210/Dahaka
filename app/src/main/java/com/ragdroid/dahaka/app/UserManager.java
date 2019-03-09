@@ -40,11 +40,8 @@ public class UserManager implements HasActivityInjector {
     public UserManager(PokemonService service, UserComponent.Builder builder) {
         this.service = service;
         this.userComponentBuilder = builder;
-        if (activityInjector != null){
-            Log.e(TAG,"activityInjector=" + activityInjector.toString());
-        } else {
-            Log.e(TAG,"activityInjector is null" );
-        }
+        Log.e(TAG,"activityInjector is null" );
+
     }
 
     public Flowable<Pokemon> loginWithUserName(String userName) {
@@ -55,6 +52,7 @@ public class UserManager implements HasActivityInjector {
     }
 
     private void createUserSession(Pokemon pokemon) {
+        Log.e(TAG, "createUserSession");
         userComponent = userComponentBuilder
                 .pokeMon(pokemon)
                 .build();
@@ -64,6 +62,7 @@ public class UserManager implements HasActivityInjector {
 
 
     private Maybe<Pokemon> getPokemonMaybeFromCache() {
+        Log.e(TAG, "getPokemonMaybeFromCache");
         if (pokemonCache != null) {
             return Maybe.just(pokemonCache);
         } else {
@@ -82,7 +81,7 @@ public class UserManager implements HasActivityInjector {
 
     @Override
     public AndroidInjector<Activity> activityInjector() {
-        Log.e(TAG,"activityInjector=" + activityInjector.toString());
+        Log.e(TAG,">>>>> activityInjector=" + activityInjector.toString());
         return activityInjector;
     }
 }

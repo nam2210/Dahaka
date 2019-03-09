@@ -27,7 +27,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
     //create user component
-    //UserComponent.Builder userBuilder();
+    UserComponent.Builder userBuilder();
 
     //expose user manager
     //UserManager getUserManager();
